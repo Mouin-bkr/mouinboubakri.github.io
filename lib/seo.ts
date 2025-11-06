@@ -1,28 +1,42 @@
 import { Metadata } from 'next'
 
-export const baseMetadata = {
-  metadataBase: new URL('https://yourwebsite.com'),
+export function getSiteUrl() {
+  const envUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, '')
+  return envUrl && /^https?:\/\//.test(envUrl) ? envUrl : 'https://example.tech'
+}
+
+const SITE_URL = getSiteUrl()
+
+export const baseMetadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Portfolio | Full-Stack Developer',
-    template: '%s | Portfolio'
+    default: 'Mouin Boubakri | Full‑Stack Developer',
+    template: '%s | Mouin Boubakri'
   },
-  description: 'Full-stack developer specializing in React, Next.js, TypeScript, and modern web technologies.',
-  keywords: ['developer', 'full-stack', 'react', 'nextjs', 'typescript', 'portfolio', 'web development'],
-  authors: [{ name: 'Your Name' }],
-  creator: 'Your Name',
+  description: 'Full‑stack developer building modern web apps with Next.js, TypeScript, DevOps (Docker, CI/CD) and data‑driven features (CV/ML).',
+  keywords: [
+    'Mouin Boubakri', 'portfolio', 'full‑stack developer', 'frontend', 'backend',
+    'Next.js', 'React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Docker', 'DevOps',
+    'Hadoop', 'Computer Vision', 'Machine Learning', 'AI', 'UI/UX', 'web performance'
+  ],
+  authors: [{ name: 'Mouin Boubakri', url: SITE_URL }],
+  creator: 'Mouin Boubakri',
+  alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://yourwebsite.com',
-    siteName: 'Portfolio',
-    title: 'Portfolio | Full-Stack Developer',
-    description: 'Full-stack developer specializing in React, Next.js, TypeScript, and modern web technologies.',
+    url: SITE_URL,
+    siteName: 'Mouin Boubakri',
+    title: 'Mouin Boubakri | Full‑Stack Developer',
+    description: 'Modern web, DevOps and data‑driven apps.',
+  images: [`${SITE_URL}/icon.svg`],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Portfolio | Full-Stack Developer',
-    description: 'Full-stack developer specializing in React, Next.js, TypeScript, and modern web technologies.',
-    creator: '@yourusername',
+    title: 'Mouin Boubakri | Full‑Stack Developer',
+    description: 'Modern web, DevOps and data‑driven apps.',
+    creator: '@',
+  images: [`${SITE_URL}/icon.svg`],
   },
   robots: {
     index: true,
@@ -35,6 +49,14 @@ export const baseMetadata = {
       'max-snippet': -1,
     },
   },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    yandex: undefined,
+    yahoo: undefined,
+    other: {
+      'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || '',
+    },
+  },
 }
 
 export function generatePageMetadata(
@@ -42,13 +64,14 @@ export function generatePageMetadata(
   description: string,
   path: string
 ): Metadata {
+  const url = `${SITE_URL}${path}`
   return {
     title,
     description,
     openGraph: {
       title,
       description,
-      url: `https://yourwebsite.com${path}`,
+      url,
       type: 'website',
     },
     twitter: {
@@ -56,5 +79,6 @@ export function generatePageMetadata(
       title,
       description,
     },
+    alternates: { canonical: url },
   }
 }

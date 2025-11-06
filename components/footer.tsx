@@ -1,11 +1,10 @@
 import Link from "next/link"
-import { Github, Linkedin, Twitter, Mail } from "lucide-react"
+import { Github, Linkedin, Mail } from "lucide-react"
 import { socials } from "@/lib/data/socials"
 
 const iconMap: Record<string, any> = {
   Github,
   Linkedin,
-  Twitter,
   Mail,
 }
 
@@ -43,7 +42,7 @@ export function Footer() {
             <h3 className="text-lg font-bold mb-4">Connect</h3>
             <div className="flex space-x-4">
               {socials.map((social) => {
-                const Icon = iconMap[social.icon]
+                const Icon = iconMap[social.icon] || Mail
                 return (
                   <a
                     key={social.name}
@@ -51,6 +50,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-primary transition-colors"
+                    aria-label={social.name}
                   >
                     <Icon className="h-5 w-5" />
                     <span className="sr-only">{social.name}</span>

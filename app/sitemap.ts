@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next'
 import { projects } from '@/lib/data/projects'
+import { getSiteUrl } from '@/lib/seo'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://yourwebsite.com'
+  const baseUrl = getSiteUrl()
 
   const staticPages = [
     {

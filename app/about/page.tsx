@@ -1,19 +1,18 @@
 "use client"
 
-import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { SectionTitle } from "@/components/section-title"
 import { socials } from "@/lib/data/socials"
-import { Github, Linkedin, Twitter, Mail, Download, Heart, Lightbulb, Target, Users } from "lucide-react"
+import { profile } from "@/lib/data/profile"
+import { Github, Linkedin, Mail, Download, Heart, Lightbulb, Target, Users } from "lucide-react"
 import { motion } from "framer-motion"
 
 const iconMap: Record<string, any> = {
   Github,
   Linkedin,
-  Twitter,
   Mail,
 }
 
@@ -71,18 +70,10 @@ export default function About() {
           >
             <Card>
               <CardContent className="pt-6">
-                <div className="relative w-full aspect-square mb-6 rounded-lg overflow-hidden bg-muted">
-                  <Image
-                    src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    alt="Profile"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <h3 className="text-2xl font-bold mb-2">Your Name</h3>
-                <p className="text-muted-foreground mb-4">Full-Stack Developer</p>
+                <h3 className="text-2xl font-bold mb-1">{profile.name}</h3>
+                <p className="text-muted-foreground mb-4">{profile.title}</p>
 
-                <div className="flex gap-3 mb-6">
+                <div className="flex flex-wrap gap-3 mb-6">
                   {socials.map((social) => {
                     const Icon = iconMap[social.icon]
                     return (
@@ -92,6 +83,7 @@ export default function About() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-10 h-10 rounded-lg bg-primary/10 hover:bg-primary/20 flex items-center justify-center transition-colors"
+                        aria-label={social.name}
                       >
                         <Icon className="h-5 w-5 text-primary" />
                       </a>
@@ -104,10 +96,19 @@ export default function About() {
                     Get In Touch
                   </Button>
                 </Link>
-                <Button variant="outline" className="w-full">
-                  <Download className="mr-2 h-4 w-4" />
-                  Download CV
-                </Button>
+                {profile.resumeUrl ? (
+                  <a href={profile.resumeUrl} target="_blank" rel="noopener noreferrer" className="block">
+                    <Button variant="outline" className="w-full">
+                      <Download className="mr-2 h-4 w-4" />
+                      Download CV
+                    </Button>
+                  </a>
+                ) : (
+                  <Button variant="outline" className="w-full" disabled>
+                    <Download className="mr-2 h-4 w-4" />
+                    CV Unavailable
+                  </Button>
+                )}
               </CardContent>
             </Card>
           </motion.div>

@@ -3,22 +3,17 @@ import { Social } from '../types';
 export const socials: Social[] = [
   {
     name: 'GitHub',
-    url: 'https://github.com/yourusername',
+    url: 'https://github.com/Mouin-bkr',
     icon: 'Github'
   },
   {
     name: 'LinkedIn',
-    url: 'https://linkedin.com/in/yourusername',
+    url: 'https://www.linkedin.com/in/mohamed-mouin-boubakri-/',
     icon: 'Linkedin'
   },
   {
-    name: 'Twitter',
-    url: 'https://twitter.com/yourusername',
-    icon: 'Twitter'
-  },
-  {
     name: 'Email',
-    url: 'mailto:your.email@example.com',
+    url: 'mailto:mouinbkr@gmail.com',
     icon: 'Mail'
   }
 ];

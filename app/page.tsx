@@ -29,7 +29,8 @@ const features = [
 ]
 
 export default function Home() {
-  const featuredProjects = projects.filter(p => p.featured).slice(0, 3)
+  // Show all projects on the home page (not only featured)
+  const allProjects = projects
 
   const gridVariants = {
     hidden: { opacity: 0, y: 8 },
@@ -55,7 +56,7 @@ export default function Home() {
                 I combine clean UI, robust backend systems, and pragmatic DevOps to deliver products that scale.
               </p>
               <div className="mt-6 flex flex-wrap justify-center gap-2">
-                {["Next.js","TypeScript","Node.js","Docker","Hadoop"].map(tag => (
+                {["Next.js","TypeScript","Node.js","Docker","Python"].map(tag => (
                   <Badge key={tag} variant="outline" className="bg-background/70 backdrop-blur-sm">
                     {tag}
                   </Badge>
@@ -90,7 +91,6 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="pt-12"
             >
-              <p className="text-sm text-muted-foreground mb-4">Trusted by companies worldwide</p>
               <div className="flex flex-wrap justify-center gap-8 opacity-50">
                 {["React", "Next.js", "TypeScript", "Node.js", "PostgreSQL"].map((tech) => (
                   <span key={tech} className="text-sm font-medium">
@@ -151,9 +151,9 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Projects</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Here are some of my recent works that showcase my skills and passion for building great software.
+              A selection of my work across front‑end, back‑end, and DevOps.
             </p>
           </motion.div>
 
@@ -164,7 +164,7 @@ export default function Home() {
             variants={gridVariants}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
           >
-            {featuredProjects.map((project, index) => (
+            {allProjects.map((project, index) => (
               <motion.div key={project.id} className="project-card-motion" variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0, transition: { duration: 0.45 } } }}>
                 <ProjectCard project={project} index={index} />
               </motion.div>
@@ -180,7 +180,7 @@ export default function Home() {
           >
             <Link href="/projects">
               <Button variant="outline" size="lg" className="group">
-                View All Projects
+                Browse Projects
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>

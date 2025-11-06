@@ -8,14 +8,14 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { SectionTitle } from "@/components/section-title"
 import { socials } from "@/lib/data/socials"
-import { Github, Linkedin, Twitter, Mail, MapPin, Send } from "lucide-react"
+import { Github, Linkedin, Mail, MapPin, Send } from "lucide-react"
 import { motion } from "framer-motion"
 import { toast } from "sonner"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 const iconMap: Record<string, any> = {
   Github,
   Linkedin,
-  Twitter,
   Mail,
 }
 
@@ -31,11 +31,38 @@ export default function Contact() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    try {
+      const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID
+      if (!formspreeId) {
+        // Fallback: open mail client
+        window.location.href = `mailto:mouinbkr@gmail.com?subject=Portfolio%20contact%20from%20${encodeURIComponent(formData.name)}&body=${encodeURIComponent(formData.message + "\n\nFrom: " + formData.email)}`
+        toast.message("Opening your email app…")
+        return
+      }
 
-    toast.success("Message sent successfully! I'll get back to you soon.")
-    setFormData({ name: "", email: "", message: "" })
-    setIsSubmitting(false)
+  const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        })
+      })
+
+      if (res.ok) {
+        toast.success("Message sent successfully! I'll get back to you soon.")
+        setFormData({ name: "", email: "", message: "" })
+      } else {
+        const data = await res.json().catch(() => ({} as any))
+        const msg = data?.errors?.[0]?.message || 'There was an issue sending your message.'
+        toast.error(msg)
+      }
+    } catch (err) {
+      toast.error('Network error. Please try again or use the email link below.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -76,10 +103,10 @@ export default function Contact() {
                     <div>
                       <p className="font-medium">Email</p>
                       <a
-                        href="mailto:your.email@example.com"
+                        href="mailto:mouinbkr@gmail.com"
                         className="text-sm text-muted-foreground hover:text-primary transition-colors"
                       >
-                        your.email@example.com
+                        mouinbkr@gmail.com
                       </a>
                     </div>
                   </div>
@@ -88,7 +115,7 @@ export default function Contact() {
                     <div>
                       <p className="font-medium">Location</p>
                       <p className="text-sm text-muted-foreground">
-                        San Francisco, CA
+                        Manouba, Tunisia
                       </p>
                     </div>
                   </div>
@@ -101,7 +128,7 @@ export default function Contact() {
                 <h3 className="text-xl font-bold mb-4">Connect With Me</h3>
                 <div className="grid grid-cols-2 gap-3">
                   {socials.map((social) => {
-                    const Icon = iconMap[social.icon]
+                    const Icon = iconMap[social.icon] || Mail
                     return (
                       <a
                         key={social.name}
@@ -109,6 +136,7 @@ export default function Contact() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 p-3 rounded-lg bg-muted hover:bg-muted/70 transition-colors"
+                        aria-label={social.name}
                       >
                         <Icon className="h-5 w-5 text-primary" />
                         <span className="text-sm font-medium">{social.name}</span>
@@ -137,6 +165,20 @@ export default function Contact() {
           >
             <Card>
               <CardContent className="pt-6">
+                {!process.env.NEXT_PUBLIC_FORMSPREE_ID && (
+                  <Alert className="mb-6">
+                    <AlertTitle>Direct email recommended</AlertTitle>
+                    <AlertDescription>
+                      For immediate assistance, please email me directly at{" "}
+                      <a
+                        href="mailto:mouinbkr@gmail.com"
+                        className="text-primary underline"
+                      >
+                        mouinbkr@gmail.com
+                      </a>
+                    </AlertDescription>
+                  </Alert>
+                )}
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
                     <Label htmlFor="name">Name *</Label>

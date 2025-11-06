@@ -1,16 +1,17 @@
+import { profile } from '@/lib/data/profile'
+import { getSiteUrl } from '@/lib/seo'
+
 export function PersonStructuredData() {
+  const siteUrl = getSiteUrl()
+  const sameAs = [profile.githubUrl, profile.linkedinUrl].filter(Boolean)
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: 'Your Name',
-    url: 'https://yourwebsite.com',
-    jobTitle: 'Full-Stack Developer',
-    description: 'Full-stack developer specializing in React, Next.js, TypeScript, and modern web technologies.',
-    sameAs: [
-      'https://github.com/yourusername',
-      'https://linkedin.com/in/yourusername',
-      'https://twitter.com/yourusername',
-    ],
+    name: profile.name,
+    url: siteUrl,
+    jobTitle: profile.title,
+    description: profile.bio,
+    sameAs,
     knowsAbout: [
       'React',
       'Next.js',
@@ -18,7 +19,11 @@ export function PersonStructuredData() {
       'Node.js',
       'Python',
       'PostgreSQL',
-      'Web Development',
+      'Docker',
+      'DevOps',
+      'Hadoop',
+      'Computer Vision',
+      'Machine Learning',
       'UI/UX Design',
     ],
   }
@@ -32,15 +37,22 @@ export function PersonStructuredData() {
 }
 
 export function WebsiteStructuredData() {
+  const siteUrl = getSiteUrl()
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Portfolio | Full-Stack Developer',
-    url: 'https://yourwebsite.com',
-    description: 'Full-stack developer specializing in React, Next.js, TypeScript, and modern web technologies.',
+    name: `${profile.name} | Full‑Stack Developer`,
+    url: siteUrl,
+    description: 'Modern web, DevOps, and data‑driven apps built with Next.js and TypeScript.',
     author: {
       '@type': 'Person',
-      name: 'Your Name',
+      name: profile.name,
+      url: siteUrl,
+    },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${siteUrl}/search?q={search_term_string}`,
+      'query-input': 'required name=search_term_string',
     },
   }
 
