@@ -23,7 +23,10 @@ export default function RootLayout({
         <PersonStructuredData />
         <WebsiteStructuredData />
         <meta name="theme-color" content="#3b82f6" />
-  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        {/* Favicon variants for broader browser compatibility */}
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="alternate icon" href="/icon.svg" />
+        <link rel="shortcut icon" href="/icon.svg" />
       </head>
   <body>
         <ThemeProvider
