@@ -15,5 +15,10 @@ export const socials: Social[] = [
     name: 'Email',
     url: 'mailto:mouinbkr@gmail.com',
     icon: 'Mail'
+  },
+  {
+    name: 'Boot.dev',
+    url: 'https://www.boot.dev/u/alqa3qa3',
+    icon: 'Terminal'
   }
 ];

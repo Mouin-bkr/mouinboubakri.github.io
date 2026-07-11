@@ -7,13 +7,14 @@ import { Badge } from "@/components/ui/badge"
 import { SectionTitle } from "@/components/section-title"
 import { socials } from "@/lib/data/socials"
 import { profile } from "@/lib/data/profile"
-import { Github, Linkedin, Mail, Download, Heart, Lightbulb, Target, Users } from "lucide-react"
+import { Github, Linkedin, Mail, Terminal, Download, Heart, Lightbulb, Target, Users } from "lucide-react"
 import { motion } from "framer-motion"
 
 const iconMap: Record<string, any> = {
   Github,
   Linkedin,
   Mail,
+  Terminal,
 }
 
 const skills = [
@@ -123,16 +124,16 @@ export default function About() {
               <h3 className="text-2xl font-bold mb-4">My Story</h3>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  Hi! I'm a full-stack developer with a passion for creating beautiful, performant, and user-friendly web applications. My journey into software development started when I built my first website in college, and I've been hooked ever since.
+                  Hi! I'm a full-stack developer based in Tunisia. I recently graduated with a Bachelor's in Computer Science from ISAMM. I work across the stack, from building clean, responsive interfaces to designing the logic, APIs, and systems that power them.
                 </p>
                 <p>
-                  Over the years, I've had the privilege of working on diverse projects ranging from small startup MVPs to large-scale enterprise applications. I specialize in modern web technologies like React, Next.js, and TypeScript on the frontend, and Node.js, Python, and PostgreSQL on the backend.
+                  I got my first hands-on experience as a Front-End Developer Intern at PlayPals Studio, contributing to a real, multi-page platform built with Next.js and Bootstrap. Today, I work as a Full Stack Developer at Clarrio, building and maintaining features end-to-end across the frontend and backend.
                 </p>
                 <p>
-                  What drives me is the intersection of design and engineering. I believe that great software is not just functional but also delightful to use. Whether it's implementing smooth animations, optimizing performance, or crafting intuitive user interfaces, I'm always focused on creating the best possible experience.
+                  Outside of work, I like building side projects that mix creativity with problem-solving, from a computer-vision Rubik's Cube solver to an AI-powered Connect 4 game. I specialize in React, Next.js, and TypeScript on the frontend, and Node.js, Python, and PostgreSQL on the backend.
                 </p>
                 <p>
-                  When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or mentoring aspiring developers. I'm always excited to take on new challenges and collaborate with talented teams.
+                  What drives me is the intersection of design and engineering: writing code that's not just functional, but genuinely pleasant to use. I'm always experimenting with new tools, APIs, and AI-powered features, and I'm open to new challenges and collaborations.
                 </p>
               </div>
             </div>

@@ -3,11 +3,10 @@ import type { Profile } from "../types";
 export const profile: Profile = {
   id: "bd007cf3-fbc4-41d3-984d-b7e045d6aefc",
   name: "Mouin Boubakri",
-  title: "Computer Science Student",
-  bio: `I’m a computer science student passionate about building interactive and intelligent web applications.
-My journey started with frontend development — crafting clean interfaces and responsive designs — but what excites me now is adding real logic and intelligence behind them.
+  title: "Full Stack Developer",
+  bio: `I’m a full stack developer passionate about building interactive and intelligent web applications, equally comfortable designing clean interfaces and building the logic and systems behind them.
 I enjoy experimenting with APIs, automation, and AI-powered features that make apps more dynamic and meaningful.
-I’m currently exploring projects that mix creativity with problem-solving — combining design thinking with technical depth.`,
+Currently working as a Full Stack Developer at Clarrio, I mix creativity with problem-solving, combining design thinking with technical depth.`,
   email: "mouinbkr@gmail.com",
   phone: "+216 50 588 372",
   location: "Tunisia",

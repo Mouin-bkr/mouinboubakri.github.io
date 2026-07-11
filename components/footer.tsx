@@ -1,11 +1,12 @@
 import Link from "next/link"
-import { Github, Linkedin, Mail } from "lucide-react"
+import { Github, Linkedin, Mail, Terminal } from "lucide-react"
 import { socials } from "@/lib/data/socials"
 
 const iconMap: Record<string, any> = {
   Github,
   Linkedin,
   Mail,
+  Terminal,
 }
 
 export function Footer() {
@@ -16,7 +17,7 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-bold mb-4">About</h3>
             <p className="text-sm text-muted-foreground">
-              Full-stack developer passionate about building beautiful, performant web applications.
+              I'm an Arch user BTW !! 
             </p>
           </div>
 

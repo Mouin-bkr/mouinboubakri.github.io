@@ -4,7 +4,7 @@ import { NextRequest } from 'next/server'
 import { getSiteUrl } from '@/lib/seo'
 
 export const runtime = 'edge'
-export const alt = 'Mouin Boubakri — Full‑Stack Developer'
+export const alt = 'Mouin Boubakri, Full‑Stack Developer'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 

@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { SectionTitle } from "@/components/section-title"
 import { socials } from "@/lib/data/socials"
-import { Github, Linkedin, Mail, MapPin, Send } from "lucide-react"
+import { Github, Linkedin, Mail, MapPin, Send, Terminal } from "lucide-react"
 import { motion } from "framer-motion"
 import { toast } from "sonner"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
@@ -17,6 +17,7 @@ const iconMap: Record<string, any> = {
   Github,
   Linkedin,
   Mail,
+  Terminal,
 }
 
 export default function Contact() {
@@ -115,7 +116,7 @@ export default function Contact() {
                     <div>
                       <p className="font-medium">Location</p>
                       <p className="text-sm text-muted-foreground">
-                        Manouba, Tunisia
+                         Tunisia
                       </p>
                     </div>
                   </div>
@@ -248,7 +249,7 @@ export default function Contact() {
         >
           <h2 className="text-3xl font-bold mb-4">Open to Opportunities</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            I'm currently available for freelance projects, full-time positions, and interesting collaborations.
+            I'm currently available for freelance projects, part-time positions, and interesting collaborations.
             If you think we'd be a good fit, don't hesitate to reach out!
           </p>
         </motion.div>
