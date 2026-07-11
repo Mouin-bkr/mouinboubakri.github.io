@@ -4,7 +4,7 @@ import Link from "next/link"
 // no avatar or photo by request
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowRight, Code2, Palette, Rocket } from "lucide-react"
+import { ArrowRight, Code2, Server, Rocket } from "lucide-react"
 import { motion } from "framer-motion"
 import { projects } from "@/lib/data/projects"
 import { ProjectCard } from "@/components/project-card"
@@ -17,9 +17,9 @@ const features = [
     description: "Writing maintainable, scalable, and well-documented code following best practices.",
   },
   {
-    icon: Palette,
-    title: "Design Focus",
-    description: "Creating beautiful, intuitive user interfaces with attention to detail.",
+    icon: Server,
+    title: "Full Stack Range",
+    description: "Comfortable across the stack, from responsive UIs to APIs, databases, and backend systems.",
   },
   {
     icon: Rocket,
@@ -50,7 +50,7 @@ export default function Home() {
               transition={{ duration: 0.5 }}
             >
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight text-balance relative z-20">
-                Mouin Bkr — Full‑Stack Developer
+                Mouin Bkr, Full‑Stack Developer
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto text-center">
                 I combine clean UI, robust backend systems, and pragmatic DevOps to deliver products that scale.
@@ -83,7 +83,7 @@ export default function Home() {
               </Link>
             </motion.div>
 
-            <div className="mt-2 text-center text-sm text-muted-foreground">Available for internships & freelance — open to DevOps, Data, and Full-Stack roles.</div>
+            <div className="mt-2 text-center text-sm text-muted-foreground">Full Stack Developer at Clarrio, open to freelance and interesting collaborations.</div>
 
             <motion.div
               initial={{ opacity: 0 }}

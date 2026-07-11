@@ -4,7 +4,7 @@ import { getSiteUrl } from '@/lib/seo'
 export default function manifest(): MetadataRoute.Manifest {
   const siteUrl = getSiteUrl()
   return {
-    name: 'Mouin Boubakri — Portfolio',
+    name: 'Mouin Boubakri Portfolio',
     short_name: 'Mouin Portfolio',
     description: 'Full‑stack developer portfolio: Next.js, TypeScript, DevOps (Docker), and data‑driven apps.',
     start_url: '/',
